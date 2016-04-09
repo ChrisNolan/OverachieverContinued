@@ -340,22 +340,59 @@ local ACHID_ZONE_MISC = {
 		IsAlliance and 9214 or 9215, -- Hero of Stormshield / Hero of Warspear
 		IsAlliance and 9714 or 9715, -- Thy Kingdom Come
 	},
+	-- "Draenor Quests" http://www.wowhead.com/achievements=1.96.15220
+	-- The 'Subzone' achievements are done during the daily garrison campaign or with the Scouting Missive to trigger the objective in that area
 	["Gorgrond"] = {
 		IsAlliance and 8923 or 8924,
 		9607,
+		9423, -- Goliaths of Gorgrond - should we include 9418 for the guild version of the same achievement?
+		9402, -- Prove Your Strength
+		SUBZONES = {
+			["Everbloom Wilds"] = { 9678, 9667, 9654, 9663, 9658 },
+			["The Pit"] = { 9655, 9656, 9659 }
+		}
 	},
 	["Talador"] = {
 		IsAlliance and 8920 or 8919,
 		9674,
+		SUBZONES = {
+			["Shattrath City"] = { 9486, 9632, 9633, 9634, 9635, 9636, 9637, 9638 } -- TODO is this the Harbour or the City or both?
+		}
 	},
 	["Spires of Arak"] = {
 		IsAlliance and 8925 or 8926,
 		9605,
+		SUBZONES = {
+			["Skettis Ruins"] = { 9612, 9613 },
+			["Lost Veil Anzu"] = { 9600, 9601 }
+		}
+	},
+	["Frostfire Ridge"] = {
+		SUBZONES = {
+			["Bloodmaul Stronghold"] = { 9533, 9534, IsAlliance and 9530 or 9531 },
+			["*Magnarok*Altar of Kron*Ascent of Frostfire*Refuse Pit*"] = { 9537, 9536, 9535 },
+			["Iron Siegeworks"] = { 9710, 9711 }
+		}
+	},
+	["Shadowmoon Valley"] = { 
+		IsAlliance and 9528 or 9529, -- On the Shadow's Trail
+		SUBZONES = {
+			["*Darktide Roost*Darktide Strait*"] = { 9481, 9483, 9479 },
+			["Shadowmoon Enclave"] = { 9433, 9434, 9432 }, -- Is that the Zone name, or is it Pillars of Fate?  And is the parent zone Spires of Arak, or Shadowmoon?  TODO
+			["Socrethar's Rise"] = { 9437, 9436, 9435 }
+		}
 	},
 	--["Nagrand"] = { -- section handled below temporarily
 	--	IsAlliance and 8927 or 8928,
 	--	9615,
 	--},
+	["Nagrand:Draenor"] = { -- Not an actual Zone name atm TODO
+		SUBZONES = {
+			["Broken Precipice"] = { 9571, 9610 },
+			["Mok'gol Watchpost"] = { 9548, 9541 },
+			["Gorian Proving Grounds"] = { 9617 } -- Or is this "The Ring of Blood" TODO
+		}
+	},
 	["Tanaan Jungle"] = {
 		10261, -- Jungle Treasure Hunter
 		10259, -- Jungle Hunter
@@ -367,6 +404,11 @@ local ACHID_ZONE_MISC = {
 		IsAlliance and 10072 or 10265, -- Rumble in the Jungle (complete the above, and any in same series as one of the above, and the explore achievement)
 		10052, -- Tiny Terrors in Tanaan
 	},
+	["Town Hall"] = {	-- Garrison, different than Lunarfall or Frostwall as specific Alliance/Horde outside garrison.  Do different levels of garrison have different names?
+		9094, -- Garrison Architect meta
+	},
+	["Frostwall Mines"] = { 9453 },
+	["Lunarfall Excavation"] = { 9453 }, 
 }
 if (IsAlliance) then
   tinsert(ACHID_ZONE_MISC["Grizzly Hills"], 2016) -- "Grizzled Veteran"
@@ -391,12 +433,11 @@ if (IsAlliance) then
   tinsert(ACHID_ZONE_MISC["Icecrown"], 3676)
   tinsert(ACHID_ZONE_MISC["Icecrown"], 2782)
   -- "Down Goes Van Rook" (currently no Horde equivalent?)
+  -- Draenor
   tinsert(ACHID_ZONE_MISC["Ashran"], 9228)
-
-  ACHID_ZONE_MISC["Shadowmoon Valley"] = {
-	8845,
-	9602,
-  }
+  tinsert(ACHID_ZONE_MISC["Shadowmoon Valley"], 8845)
+  tinsert(ACHID_ZONE_MISC["Shadowmoon Valley"], 9602)
+  ACHID_ZONE_MISC["Lunarfall"] = { 9094, 9564 } -- Garrison related achievements TODO
 
 else
   tinsert(ACHID_ZONE_MISC["Azshara"], 5454) -- "Joy Ride"
@@ -418,10 +459,9 @@ else
   tinsert(ACHID_ZONE_MISC["Icecrown"], 3677)
   tinsert(ACHID_ZONE_MISC["Icecrown"], 2788)
   
-  ACHID_ZONE_MISC["Frostfire Ridge"] = {
-	8671,
-	9606,
-  }
+  tinsert(ACHID_ZONE_MISC["Frostfire Ridge"], 8671)
+  tinsert(ACHID_ZONE_MISC["Frostfire Ridge"], 9606)
+  ACHID_ZONE_MISC["Frostwall"] = { 9094, 9564 } -- Garrison related achievements TODO
 
 end
 -- "The Fishing Diplomat":
@@ -460,15 +500,15 @@ local ACHID_INSTANCES = {
 	["Maraudon"] = 640,
 	["Sunken Temple"] = 641,
 	["Blackrock Depths"] = 642,
-	["Lower Blackrock Spire"] = 643,
-	["Upper Blackrock Spire"] = { 1307, 2188 },	-- "Upper Blackrock Spire", "Leeeeeeeeeeeeeroy!"
+	["Lower Blackrock Spire"] = 643, -- Doesn't exist internally seperate from UBRS after the Draenor split?  TODO is there another way to tell?
+	-- changed to (Legacy) achievements in Draenor ["Upper Blackrock Spire"] = { 1307, 2188 },	-- "Upper Blackrock Spire", "Leeeeeeeeeeeeeroy!"
 	["Dire Maul"] = 644,
 	["Stratholme"] = 646,
 -- Classic Raids
 	-- These are now Feats of Strength: ["Zul'Gurub"] = { 688, 560, 957 },	-- "Zul'Gurub", "Deadliest Catch", "Hero of the Zandalar"
 	["Ruins of Ahn'Qiraj"] = 689,
 	--["Onyxia's Lair"] = 684, -- This is now a Feat of Strength
-	["Molten Core"] = 686,
+	["The Molten Core"] = { 686, 428, 429, 955 }, -- Zone name as the "The" in front - also include the FoS for the Legendaries and the achiev for Exalted Rep
 	["Blackwing Lair"] = 685,
 	["Temple of Ahn'Qiraj"] = 687,
 -- Burning Crusade
@@ -519,8 +559,17 @@ local ACHID_INSTANCES = {
 	-- Heroic only, but these dungeons are heroic only so it may as well always show up if suggesting for the zone:
 	["Zul'Aman"] = { 5769, 5858, 5760, 5761, 5750 },  -- "Heroic: Zul'Aman", "Bear-ly Made It", "Ring Out!", "Hex Mix", "Tunnel Vision"
 	["Zul'Gurub"] = { 5768, 5765, 5743, 5762, 5759, 5744 },  -- "Heroic: Zul'Gurub", "Here, Kitty Kitty...", "It's Not Easy Being Green", "Ohganot So Fast!", "Spirit Twister", "Gurubashi Headhunter"
+	["End Time"] = {6130,5995,6117},
+	["Hour of Twilight"] = {6132,6119},
+	["Well of Eternity"] = {6127,6070,6118},
 -- Cataclysm Raids
-	["Firelands"] = { 5802, 5828, 5855 }, -- "Firelands", "Glory of the Firelands Raider", "Ragnar-O's"
+	["Baradin Hold"] = {5416,6045,6108},
+	-- To be consistent, the heroic only achievements in the lists below should be filtered out...
+	["The Bastion of Twilight"] = {5300,4852,5311,5312,0,4850,5118,5117,5119,5120,5121},
+	["Throne of the Four Winds"] = {5304,5305,4851,5122,5123},
+	["Blackwing Descent"] = {5306,5307,5310,5308,5309,4849,4842,5094,5107,5108,5109,5115,5116},
+	["Firelands"] = {5821,5810,5813,5829,5830,5799,5855,5807,5808,5809,5806,5805,5804,5803,5802}, -- "Firelands", "Glory of the Firelands Raider", "Ragnar-O's"
+	["Dragon Soul"] = {6174,6128,6129,6175,6084,6105,6133,6180,6106,6107,6177,6109,6110,6111,6112,6113,6114,6115,6116},
 
 -- Pandaria Dungeons
 	["Gate of the Setting Sun"] = 6945, -- "Mantid Swarm"
@@ -539,6 +588,17 @@ local ACHID_INSTANCES = {
 		8454, 8458, 8459, 8461, 8462, -- "Glory of the Orgrimmar Raider", "Vale of Eternal Sorrows", "Gates of Retribution", "The Underhold", "Downfall"
 		IsAlliance and 8679 or 8680 -- "Conqueror of Orgrimmar" or "Liberator of Orgrimmar"
 	},
+
+-- Draenor Dungeons
+	["Auchindoun"] = 9039, 
+	["Bloodmaul Slag Mines"] = 9037,
+	["Grimrail Depot"] = 9043,
+	["Iron Docks"] = 9038,
+	["Shadowmoon Burial Grounds"] = 9041,
+	["Skyreach"] = 8843,
+	["The Everbloom"] = 9044,
+	["Hall of Blackhand"] = { 643, 9042 } -- The old "Blackrock Spire", when they split it into two instances, the zone name stayed the same so Lower Blackrock Spire and Upper Blackrock Spire
+
 }
 -- Battlegrounds
 ACHID_INSTANCES["The Battle for Gilneas"] = 5258
@@ -653,6 +713,21 @@ local ACHID_INSTANCES_HEROIC = {
 		8463, 8465, 8466, 8467, 8468, 8469, 8470, -- "Heroic: Immerseus", "Heroic: Fallen Protectors", "Heroic: Norushen", "Heroic: Sha of Pride", "Heroic: Galakras", "Heroic: Iron Juggernaut", "Heroic: Kor'kron Dark Shaman",
 		8471, 8472, 8478, 8479, 8480, 8481, 8482, -- "Heroic: General Nazgrim", "Heroic: Malkorok", "Heroic: Spoils of Pandaria", "Heroic: Thok the Bloodthirsty", "Heroic: Siegecrafter Blackfuse", "Heroic: Paragons of the Klaxxi", "Heroic: Garrosh Hellscream"
 	},
+-- Draenor Dungeons
+-- Should we including the "Challengers" here too? TODO  And are Mythic handled because of the series?
+	["Auchindoun"] = {9023,9551,9552,9039,9049,9371}, 
+	["Bloodmaul Slag Mines"] = {8993,9005,9008,9037,9046,9369},
+	["Grimrail Depot"] = {9024,9007,9043,9052,9373},
+	["Iron Docks"] = {9081,9083,9082,9038,9047,9370},
+	["Shadowmoon Burial Grounds"] = {9018,9025,9026,9041,9054,9375},
+	["Skyreach"] = {9033,9035,9034,9036,8843,8844,9372},
+	["The Everbloom"] = {9493,9017,9223,9044,9053,9374},
+	["Hall of Blackhand"] = {9045,9058,9056,9057,9042,9055,9376},
+-- Draenor Raids -- Can I break them out in Sub-zones like Ulduar is I wonder...
+	["Highmaul"] = {8948,8947,8975,8974,8958,8976,8977,8986,8987,8988},
+	["Blackrock Foundry"] = {8978,8979,8930,8980,8929,8983,8981,8982,8984,8952,8989,8990,8991,8992},
+	["Hellfire Citadel"] = {10026,10057,10013,9972,9979,9988,10086,9989,10012,10087,10030,10073,10023,10024,10025,10020,10019},
+
 }
 
 -- INSTANCES - 10-MAN ONLY (normal or heroic):
@@ -1028,7 +1103,7 @@ local function Refresh(self)
       end
 
     else
-      Refresh_Add(Overachiever.ExploreZoneIDLookup(zone), ACHID_ZONE_NUMQUESTS[zone], ACHID_ZONE_MISC[zone])
+      Refresh_Add(Overachiever.ExploreZoneIDLookup(zone), ACHID_ZONE_NUMQUESTS[zone], ACHID_ZONE_MISC[zone] or ACHID_ZONE_MISC[CurrentSubzone])
       -- Also look for instance achievements for an instance you're near if we can look it up easily (since many zones
       -- have subzones with the instance name when you're near the instance entrance and some instance entrances are
       -- actually in their own "zone" using the instance's zone name):

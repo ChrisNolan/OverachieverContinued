@@ -1,0 +1,43 @@
+Get achievements from http://www.wowhead.com/achievements=1.168.15228 -- 50 in total.  What are the 8 dungeon names?
+
+["Auchindoun"] 
+["Bloodmaul Slag Mines"]
+["Grimrail Depot"]
+["Iron Docks"]
+["Shadowmoon Burial Grounds"]
+["Skyreach"]
+["The Everbloom"]
+["Upper Blackrock Spire"]
+
+For 'normal' mode, only the achievements for the dungeons themselves, then in heroic, the heroic dungeon achievement and each extra.  So not 'normal', but in the all.
+
+The "RaidAchievement" (or is it AchievementReminder) addon seems to do this a different way... wonder if just leave it to taht? It has a module: WoDHeroics -- maybe take data or something from there?
+
+I could do the Zone achievements too -- the ones for subZones based on the 'Securing Draenor' missions etc.  Shadowmoon Valley and Nagrand might be tricky?
+
+What about Garrison related achievements?  Filter those based on which buildings you have?  9491|9492
+	The different buildings do have their own Zone name.  e.g
+		* Barracks
+		* Town Hall
+		* War Mill
+		* Trading Post
+		* Gem Boutique
+		* Enchanter's Study
+		* Scribe's Quarters
+		* Frostwall Tavern
+		* Frostwall Mine
+Where should the Legendary "Chapter I" etc quests go?  Zangar tower, or garrison, or each chapter in their respective raids? 9640, 9641, 9642, 10021/10148
+Master Relic Hunter -- criteria specific to a SubZone?
+
+Does 'Jungle Stalker' update the tooltip like the other hunting rare achievements?
+
+For the "Incomplete" filter -- is there a way to say incomplete on this character, and not the account?  Is that addon based, or API based?
+ * Add in the FoSs for Legendaries into their respective raids : http://www.wowhead.com/guide=912/obtainable-feats-of-strength#legendaries
+ * Reputation achievements for dungeon rep grinds
+ * Pandaria Scenarios, do they have any suggestions?
+ * Proving Grounds
+ * Meta's like Field Photographer or the Pepe's Trip one.  Raiding with Leashes too?
+ 
+What's needed to make the new tabs skinable by other UIs?  e.g. ElvUI looks one way, but the new tabs look another.
+Could i link in with Achievement Reminder what whatever it's called and someone nab suggestions from it I wonder?  Maintain the data in one place that way?
+Most of the Cata raids were missing too, doh.  What is is missing?
