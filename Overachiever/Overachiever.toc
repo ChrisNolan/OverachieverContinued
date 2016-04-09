@@ -1,0 +1,33 @@
+﻿## Interface: 60200
+## Title: Overachiever
+## Version: 0.84
+## Author: Tuhljin
+## Notes: Tools and tweaks to make the lives of players seeking Achievements a little bit easier.
+## Notes-zhTW: 使玩家尋求成就可以稍微輕鬆點的微調工具。
+## Notes-zhCN: 使玩家寻求成就可以稍微轻松点的微调工具。
+## SavedVariables: Overachiever_Settings, Overachiever_CharVars_Default
+## SavedVariablesPerCharacter: Overachiever_CharVars, Overachiever_CharVars_Consumed
+## OptionalDeps: LibBabble-SubZone-3.0, LibBabble-Inventory-3.0
+## X-WoWI-ID: 11361
+## X-Curse-Packaged-Version: v0.84
+## X-Curse-Project-Name: Overachiever - achievement tools and tweaks
+## X-Curse-Project-ID: overachiever
+## X-Curse-Repository-ID: wow/overachiever/mainline
+
+#@no-lib-strip@
+libs\LibBabble-SubZone-3.0\LibStub\LibStub.lua
+libs\LibBabble-SubZone-3.0\lib.xml
+libs\LibBabble-Inventory-3.0\lib.xml
+#@end-no-lib-strip@
+
+libs\TjOptions.lua
+libs\TjSharedMediaDropDown\lib.xml
+libs\TjDragIt.lua
+libs\TjBagWatch.lua
+
+localization.lua
+Overachiever.lua
+AchieveID.lua
+AchieveTip.lua
+GameTip.lua
+Options.lua

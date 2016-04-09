@@ -1,0 +1,19 @@
+------------------------------------------------------------------------
+r128 | tuhljin | 2015-11-10 11:27:04 +0000 (Tue, 10 Nov 2015) | 1 line
+Changed paths:
+   A /tags/v0.84 (from /trunk:127)
+
+Tagging as v0.84
+------------------------------------------------------------------------
+r127 | tuhljin | 2015-11-10 09:54:54 +0000 (Tue, 10 Nov 2015) | 1 line
+Changed paths:
+   M /trunk/Overachiever.lua
+   M /trunk/Overachiever.toc
+   M /trunk/Overachiever_Tabs/Overachiever_Tabs.toc
+   M /trunk/Overachiever_Tabs/Search.lua
+   M /trunk/Overachiever_Tabs/Suggestions.lua
+   M /trunk/Overachiever_Trade/Overachiever_Trade.toc
+   M /trunk/readme.txt
+
+- Workaround for a WoW bug where the API gives the wrong count of achievements in a category. This should fix debug message spam when doing an achievement search as well as an error when searching by achievement criteria (or searching by "Any").
+------------------------------------------------------------------------
